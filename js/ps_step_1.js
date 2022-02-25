@@ -6,6 +6,7 @@ const greet = "Hallo";
 let check;
 toDo();
 let lampe;
+let yellow;
 
 function init() {
   console.log(greet);
@@ -16,7 +17,8 @@ function init() {
   toDo();
   lampe = document.getElementById("lightbulb");
   console.log(lampe);
-  document.addEventListener("click", onMouseClick)
+  document.addEventListener("click", onMouseClick);
+  yellow=true;
 }
 
 function toDo() {
@@ -26,12 +28,14 @@ function toDo() {
 
 function onMouseClick() {
     console.log("Der User hat auf die Seite geklickt");
-    if (yellow = true) {
+    if (yellow==true) {
         lampe.setAttribute("fill", "grey");
-        
+        console.log("Lampe Grau");
+        yellow=false;
     } else {
-        lampe.setAttribute("fill", "yellow")
-        
+        lampe.setAttribute("fill", "yellow");
+        console.log("Lampe Gelb");
+        yellow=true;
     }
 }
 console.log("END");
