@@ -3,6 +3,7 @@ Homeworks.aufgabe = 2;
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent('thecanvas');
+  document.addEventListener("click", onMouseClick);
 }
 
 function draw() {
@@ -10,4 +11,8 @@ function draw() {
   let c = color(Math.random() * 256, Math.random() * 256, Math.random() * 256);
   fill(c);
   ellipse(Math.random() * windowWidth, Math.random() * windowHeight, 20, 20);
+}
+
+function onMouseClick() {
+  console.log("click");
 }
