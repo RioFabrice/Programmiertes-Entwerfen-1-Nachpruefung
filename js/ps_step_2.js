@@ -18,4 +18,19 @@ function draw() {
 function onMouseClick() {
   console.log("click");
   counter++;
+
+  switch (counter) {
+    case 1:
+      console.log("click 1");
+      break;
+    case 2:
+      console.log("click 2");
+      break;
+    case 3:
+      console.log("click 3");
+      break;
+    case 4:
+      console.log("click 4");
+      break;
+  }
 }
