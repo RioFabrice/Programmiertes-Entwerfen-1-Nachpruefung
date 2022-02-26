@@ -9,6 +9,7 @@ function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent('thecanvas');
   document.addEventListener("click", onMouseClick);
+  frameRate(30)
 }
 
 function draw() {
@@ -37,6 +38,7 @@ function onMouseClick() {
       break;
     case 3:
       console.log("click 3");
+      frameRate(60);
       break;
     case 4:
       console.log("click 4");
