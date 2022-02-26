@@ -2,6 +2,8 @@ Homeworks.aufgabe = 2;
 
 let counter = 0
 let size = 20
+let c;
+let changeColor = false
 
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
@@ -11,8 +13,12 @@ function setup() {
 
 function draw() {
   background(40, 10);
-  let c = color(Math.random() * 256, Math.random() * 256, Math.random() * 256);
+  c = color("#00bfff");
   fill(c);
+  if (changeColor == true) {
+    c = color(Math.random() * 256, Math.random() * 256, Math.random() * 256);
+    fill(c);
+  }
   ellipse(Math.random() * windowWidth, Math.random() * windowHeight, size, size);
 }
 
@@ -27,6 +33,7 @@ function onMouseClick() {
       break;
     case 2:
       console.log("click 2");
+      changeColor = true;
       break;
     case 3:
       console.log("click 3");
