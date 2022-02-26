@@ -1,5 +1,7 @@
 Homeworks.aufgabe = 2;
 
+let counter = 0
+
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent('thecanvas');
@@ -15,4 +17,5 @@ function draw() {
 
 function onMouseClick() {
   console.log("click");
+  counter++;
 }
