@@ -40,9 +40,11 @@ function onMouseClick() {
       console.log("click 3");
       frameRate(60);
       break;
-    case 4:
-      console.log("click 4");
-      break;
     default:
+      counter = 0;
+      size = 20;
+      changeColor = false;
+      frameRate(30);
+      clear();
   }
 }
