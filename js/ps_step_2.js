@@ -1,6 +1,7 @@
 Homeworks.aufgabe = 2;
 
 let counter = 0
+let size = 20
 
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
@@ -12,7 +13,7 @@ function draw() {
   background(40, 10);
   let c = color(Math.random() * 256, Math.random() * 256, Math.random() * 256);
   fill(c);
-  ellipse(Math.random() * windowWidth, Math.random() * windowHeight, 20, 20);
+  ellipse(Math.random() * windowWidth, Math.random() * windowHeight, size, size);
 }
 
 function onMouseClick() {
@@ -22,6 +23,7 @@ function onMouseClick() {
   switch (counter) {
     case 1:
       console.log("click 1");
+      size = 40;
       break;
     case 2:
       console.log("click 2");
@@ -32,5 +34,6 @@ function onMouseClick() {
     case 4:
       console.log("click 4");
       break;
+    default:
   }
 }
