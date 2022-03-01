@@ -7,18 +7,18 @@ let hugoBoolean = true;
 let hugoArray = ["Benno", "Marina", "Elijah", "Selina"];
 */
 
-let numCol = 10;
-let numRow = 10;
+let numCol = 14;
+let numRow = 8;
 let borderX, borderY;
-let length = 40;
-let gap = 10;
+let length = 50;
+let gap = 5;
 
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent('thecanvas');
   //document.addEventListener('keyup', onKeyUp);
-  borderX = (windowWidth - (numCol * (length + gap) - gap)) /2;
-  borderY = (windowHeight - (numRow * (length + gap) - gap)) /2;
+  borderX = (windowWidth - (numRow * (length + gap) - gap)) /2;
+  borderY = (windowHeight - (numCol * (length + gap) - gap)) /2;
 }
 
 function draw() {
@@ -28,6 +28,7 @@ function draw() {
     }
   }
 }
+
 
 //Hide the HTML Text with h and show it again with s
 function keyTyped() {
