@@ -7,26 +7,26 @@ let hugoBoolean = true;
 let hugoArray = ["Benno", "Marina", "Elijah", "Selina"];
 */
 
-let numCol, numRow;
+let numCol = 10;
+let numRow = 10;
+let borderX, borderY;
+let length = 40;
+let gap = 10;
 
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent('thecanvas');
   //document.addEventListener('keyup', onKeyUp);
+  borderX = (windowWidth - (numCol * (length + gap) - gap)) /2;
+  borderY = (windowHeight - (numRow * (length + gap) - gap)) /2;
 }
 
 function draw() {
-  numCol = 10;
-  numRow = 10;
   for (let col = 0; col < numCol; col++) {
-    console.log("COL", col);
-    rect(200, 200, 40, 40);
+    for (let row = 0; row < numRow; row++) {
+      rect(borderX + row * (length + gap), borderY + col * (length + gap), length, length);
+    }
   }
-  for (let row = 0; row < numRow; row++) {
-    console.log("ROW", row)
-    rect(200, 200, 40, 40);
-  }
-  console.log("DONE");
 }
 
 //Hide the HTML Text with h and show it again with s
@@ -38,3 +38,6 @@ function keyTyped() {
     divToHide.style.visibility = "visible"
   }
 }
+
+
+
