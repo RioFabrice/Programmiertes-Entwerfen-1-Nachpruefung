@@ -8,6 +8,7 @@ class Block {
 
   constructor(attrs) {
     this.attrs = attrs;
+    this.attrs.useRect = true;
   }
 
   draw() {
@@ -51,12 +52,13 @@ function setup() {
   for (let col = 0; col < numCol; col += 1) {
     fields[col] = [];
     for (let row = 0; row < numRow; row++) {
-      fields[col][row] = new Block({color: 'red', pos: {x: borderX + col * (size + gap), y: borderY + row * (size + gap)}, size: size, useRect: true});
+      fields[col][row] = new Block({color: 'red', pos: {x: borderX + col * (size + gap), y: borderY + row * (size + gap)}, size: size});
     }
   }
 }
 
 function draw() {
+  clear();
   for (let col = 0; col < numCol; col += 1) {
     for (let row = 0; row < numRow; row++) {
       fields[col][row].draw();
@@ -71,6 +73,13 @@ function onMouseClick() {
   let randomX = Math.floor(Math.random() * numCol);
   let randomY = Math.floor(Math.random() * numRow);
   fields[randomX][randomY].attrs.color = color(Math.random() * 255, Math.random() * 255, Math.random() * 255);
+  randomPick = random(0,100);
+  if(randomPick < 50)
+    {fields[randomX][randomY].attrs.useRect = false}
+  else
+    {fields[randomX][randomY].attrs.useRect = true}
+  console.log("click");
+  console.log(this.useRect);
 }
 
 function keyTyped() {
