@@ -53,8 +53,8 @@ let gap = 8;
 let numCol = 15;
 let numRow = 15;
 
-let actCol = 10;
-let actRow = 0;
+let actCol = Math.floor(Math.random() * (numCol - 1) % numCol );
+let actRow = Math.floor(Math.random() * (numRow - 1) % numRow );
 
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
@@ -64,6 +64,9 @@ function setup() {
   let borderX = (windowWidth - patternWidth) / 2;
   let patternHeight = (size + gap) * numRow - gap;
   let borderY = (windowHeight - patternHeight) / 2;
+
+  let randomX = Math.floor(Math.random() * numCol);
+  let randomY = Math.floor(Math.random() * numRow);
 
   for (let col = 0; col < numCol; col += 1) {
     fields[col] = [];
@@ -80,7 +83,7 @@ function setup() {
   // console.log(myBlock.attrs);
   //myBlock.draw();
   fields[actCol][actRow].changeColor('magenta');
-  fields[11][7].changeColor('green');
+  fields[randomX][randomY].changeColor('green');
 }
 
 function draw() {
