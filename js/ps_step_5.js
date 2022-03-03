@@ -104,9 +104,11 @@ function keyPressed(evt) {
     case "h":
       divToHide.style.visibility = "hidden";
       break;
+
     case "s":
       divToHide.style.visibility = "visible";
       break;
+
     case "ArrowUp":
       fields[actCol][actRow].changeColor('red');
       if (actRow > 0) {
@@ -118,6 +120,7 @@ function keyPressed(evt) {
       fields[actCol][actRow].changeColor('magenta');
       console.log("UP");
       break;
+
     case "ArrowDown":
       fields[actCol][actRow].changeColor('red');
       // if (actRow < numRow -1) {
@@ -128,6 +131,30 @@ function keyPressed(evt) {
       actRow = (actRow + 1) % numRow;
       fields[actCol][actRow].changeColor('magenta');
       console.log("DOWN");
+      break;
+
+    case "ArrowLeft":
+      fields[actCol][actRow].changeColor('red');
+      if (actCol > 0) {
+        actCol = actCol - 1;
+      } else {
+        actCol = numCol - 1;
+      }
+      //actRow = (actRow + 1) % numRow;
+      fields[actCol][actRow].changeColor('magenta');
+      console.log("Left");
+      break;
+
+    case "ArrowRight":
+      fields[actCol][actRow].changeColor('red');
+      // if (actCol > 0) {
+      //   actCol = actCol + 1;
+      // } else {
+      //   actCol = numCol - 1;
+      // }
+      actCol = (actCol + 1) % numCol;
+      fields[actCol][actRow].changeColor('magenta');
+      console.log("Right");
       break;
     default:
       console.log(key)
