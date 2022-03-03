@@ -1,8 +1,8 @@
 Homeworks.aufgabe = 4;
 
-let rand = 400;
-let grid = 40;
-let field;
+let fields = [];
+
+//let hugoObject = {color: 'green', pos: {x: 90, y: 0}, size: 20};
 
 class Block {
 
@@ -11,18 +11,74 @@ class Block {
   }
 
   draw() {
+    ellipseMode(CORNER)
     fill(this.attrs.color);
-    rect(rand + this.attrs.pos.x * grid, rand + this.attrs.pos.y * grid, this.attrs.size, this.attrs.size);
+    if (this.attrs.useRect) {
+      rect(this.attrs.pos.x, this.attrs.pos.y, this.attrs.size, this.attrs.size);
+    } else {
+      ellipse(this.attrs.pos.x, this.attrs.pos.y, this.attrs.size, this.attrs.size);
+    }
+  }
+
+  // sleep() {
+  //   console.log(this.attrs);
+  // }
+
+  changeColor(newColor) {
+
   }
 
 }
 
+let size = 20;
+let gap = 8;
+let numCol = 10;
+let numRow = 10;
+let colors = [];
+
 function setup() {
+  
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent('thecanvas');
-  field = new Block({color: 'green', pos: {x: 0, y: 0}, size: 20});
+
+  document.addEventListener("click", onMouseClick);
+  
+  let patternWidth = (size + gap) * numCol - gap;
+  let borderX = (windowWidth - patternWidth) / 2;
+  let patternHeight = (size + gap) * numRow - gap;
+  let borderY = (windowHeight - patternHeight) / 2;
+
+  for (let col = 0; col < numCol; col += 1) {
+    fields[col] = [];
+    for (let row = 0; row < numRow; row++) {
+      fields[col][row] = new Block({color: 'red', pos: {x: borderX + col * (size + gap), y: borderY + row * (size + gap)}, size: size, useRect: true});
+    }
+  }
 }
 
 function draw() {
-  field.draw();
+  for (let col = 0; col < numCol; col += 1) {
+    for (let row = 0; row < numRow; row++) {
+      fields[col][row].draw();
+    }
+  }
+  // fields.forEach((field, idx) => {
+  //   field.draw();
+  // });
 }
+
+function onMouseClick() {
+  let randomX = Math.floor(Math.random() * numCol);
+  let randomY = Math.floor(Math.random() * numRow);
+  fields[randomX][randomY].attrs.color = color(Math.random() * 255, Math.random() * 255, Math.random() * 255);
+}
+
+function keyTyped() {
+  let divToHide = document.getElementsByClassName("overlay")[0];
+  if (key == "h") {
+    divToHide.style.visibility = "hidden";
+  } else if (key == "s") {
+    divToHide.style.visibility = "visible"
+  }
+}
+
