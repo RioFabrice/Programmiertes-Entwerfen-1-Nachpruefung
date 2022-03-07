@@ -54,10 +54,10 @@ function setup() {
       fields[col][row] = new Block({ color: 'red', pos: { x: borderX + col * (size + gap), y: borderY + row * (size + gap) }, size: size, useRect: true, hallo: false });
     }
   }
-  fields[actPos.x][actPos.y].changeColor('magenta');
   placeFood();
+  placePoison();
   snake.unshift(fields[actPos.x][actPos.y]);
-  snake[0].changeColor('magenta');
+  snake[0].changeColor("magenta");
   frameRate(5);
 }
 
@@ -75,8 +75,12 @@ function placeFood() {
   fields[Math.floor(random(0, numCol))][Math.floor(random(0, numRow))].changeColor("green")
 }
 
+function placePoison() {
+  fields[Math.floor(random(0, numCol))][Math.floor(random(0, numRow))].changeColor("yellow")
+}
+
 function snakeMove() {
-  fields[actPos.x][actPos.y].changeColor('red');
+  snake[snake.length - 1].changeColor("red");
   actPos.x += move.x;
   actPos.y += move.y;
   if (actPos.x > numCol - 1) {
@@ -96,10 +100,19 @@ function snakeMove() {
     case "green":
       placeFood()
       break;
+    
+    case "yellow":
+      snake.pop();
+      snake[snake.length - 1].changeColor("red")
+      placePoison();
+
+    case "magenta":
+      console.log("gameOver");
     default:
+      snake.pop();
       break;
   }
-  snake[0].changeColor('magenta');
+  snake[0].changeColor("magenta");
 }
 
 //Hide the HTML Text with h and show it again with s
